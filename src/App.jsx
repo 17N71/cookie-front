@@ -1,4 +1,3 @@
-import axios from "axios";
 import Cookies from "js-cookie";
 import { useState } from "react";
 import "./App.css";
@@ -8,8 +7,12 @@ function App() {
   const [myCookie, setmyCookie] = useState(() => Cookies.get("myCookie"));
   const submit = async e => {
     e.preventDefault();
-    data = await axios.post("https://cookie-test-amxb.onrender.com/auth", null, {
-      withCredentials: true,
+    data = fetch("https://cookie-test-amxb.onrender.com/auth", {
+      method: "post",
+      credentials: "include",
+    }).then(res => {
+      console.log(res.headers.getSetCookie());
+      return res.json();
     });
     setmyCookie(Cookies.get("myCookie"));
   };
