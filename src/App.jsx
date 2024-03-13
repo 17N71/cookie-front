@@ -5,6 +5,7 @@ function App() {
       credentials: "include",
       method: "post",
     }).then(res => {
+      console.log(res.headers);
       console.log(res.headers.getSetCookie());
       return res;
     });
