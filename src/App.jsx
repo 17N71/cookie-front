@@ -7,13 +7,14 @@ function App() {
   const [myCookie, setmyCookie] = useState(() => Cookies.get("myCookie"));
   const submit = async e => {
     e.preventDefault();
-    data = fetch("https://cookie-test-amxb.onrender.com/auth", {
-      method: "post",
+    data = await fetch("https://cookie-test-amxb.onrender.com/auth", {
       credentials: "include",
+      method: "post",
     }).then(res => {
       console.log(res.headers.getSetCookie());
-      return res.json();
+      return res;
     });
+
     setmyCookie(Cookies.get("myCookie"));
   };
   return (
