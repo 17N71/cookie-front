@@ -4,10 +4,11 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
+  let data = {};
   const [myCookie, setmyCookie] = useState(() => Cookies.get("myCookie"));
   const submit = async e => {
     e.preventDefault();
-    await axios.post("https://cookie-test-amxb.onrender.com/auth", null, {
+    data = await axios.post("https://cookie-test-amxb.onrender.com/auth", null, {
       withCredentials: true,
     });
     setmyCookie(Cookies.get("myCookie"));
@@ -17,6 +18,7 @@ function App() {
       <form onSubmit={submit}>
         <button>click to me</button>
       </form>
+      {data}
       {JSON.stringify(myCookie)}
     </>
   );
