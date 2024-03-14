@@ -5,7 +5,7 @@ function App() {
   const [cookie, setCookie] = useState("");
   const submit = e => {
     e.preventDefault();
-    fetch("https://pdbtjldv-3000.euw.devtunnels.ms/auth", {
+    fetch("https://cookie-test-amxb.onrender.com/auth", {
       credentials: "include",
       method: "post",
     }).then(res => {
