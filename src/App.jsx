@@ -10,6 +10,7 @@ function App() {
       method: "post",
     }).then(res => {
       setCookie(Cookies.get("myCookie"));
+      console.log(res.headers.getSetCookie(), res);
       return res.json();
     });
   };
