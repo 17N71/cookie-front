@@ -1,14 +1,16 @@
+import Cookies from "js-cookie";
+import { useState } from "react";
+
 function App() {
-  const submit = async e => {
+  const [cookie, setCookie] = useState("");
+  const submit = e => {
     e.preventDefault();
-    await fetch("https://cookie-test-amxb.onrender.com/auth", {
+    fetch("https://pdbtjldv-3000.euw.devtunnels.ms/auth", {
       credentials: "include",
       method: "post",
     }).then(res => {
-      console.log(res);
-      // console.log(res.headers);
-      // console.log(res.headers.getSetCookie());
-      return res;
+      setCookie(Cookies.get("myCookie"));
+      return res.json();
     });
   };
   return (
@@ -17,6 +19,7 @@ function App() {
       <form onSubmit={submit}>
         <button>click to me</button>
       </form>
+      <pre>thats cookie from backend : {cookie}</pre>
     </>
   );
 }
