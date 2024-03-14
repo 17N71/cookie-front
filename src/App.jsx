@@ -11,7 +11,7 @@ function App() {
     }).then(res => {
       setCookie(Cookies.get("myCookie"));
       console.log(res.headers.getSetCookie());
-      console.log(res);
+      console.log(res.headers.get("my"));
       return res.json();
     });
   };
